@@ -20,6 +20,7 @@ ENV NODE_ENV development
 
 ## Allows port 3000 to be publicly available
 EXPOSE 80
+EXPOSE 3000
 
 ## The command uses nodemon to run the application
 #RUN ["chmod", "+x", "start.sh"]
