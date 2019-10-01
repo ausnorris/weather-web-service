@@ -23,4 +23,4 @@ EXPOSE 80
 
 ## The command uses nodemon to run the application
 #RUN ["chmod", "+x", "start.sh"]
-CMD node /src/app.js
+CMD node ./src/app.js

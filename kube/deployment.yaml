@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: weather-web-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: weather-app
+      tier: web
+  template:
+    metadata:
+      labels:
+        app: weather-app
+        tier: web
+    spec:
+      containers:
+      - name: weather-web-service
+        image: harbor.virtualiseme.com.au/weather-app/weather-web:latest
+        ports:
+        - containerPort: 80
