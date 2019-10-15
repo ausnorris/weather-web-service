@@ -3,16 +3,27 @@ const express = require('express')
 const hbs = require('hbs')
 const geocode = require('./utils/geocode')
 const forecast = require('./utils/forecast')
+const logResponseTime = require("./utils/response-time-logger");
 const app = express();
 const port = process.env.PORT || 3000;
+const DEPLOYMENTID = process.env.DEPLOYMENT_ID || "vra.node.testing";
 
 const viewsPath = path.join(__dirname, '../templates/views')
 const partialsPath = path.join(__dirname, '../templates/partials')
+
+const metrics = require('wavefrontmetrics');
+const registry = new metrics.Registry();
+const prefix = "wavefront.nodejs.direct";
+
+const directReporter = new metrics.WavefrontDirectReporter(registry, prefix,  "surf.wavefront.com", "b05bbab4-946d-46d1-9f0e-59cbc55672a2", { 'tag0': "default", 'source': "wavefront-nodejs-example"});
+directReporter.start(5000);
+
 //Setup Handlebars engine and view location
 app.set('views', viewsPath)
 app.set('view engine', 'hbs')
 hbs.registerPartials(partialsPath)
 app.use(express.static(path.join(__dirname, '../public')))
+app.use(logResponseTime)
 
 app.get('', (req, res)=> {
     res.render('index', {
