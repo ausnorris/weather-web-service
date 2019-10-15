@@ -5,7 +5,7 @@ const DEPLOYMENTID = process.env.DEPLOYMENT_ID || "vra.node.testing.new";
 const WAVEFRONT_TOKEN = process.env.WAVEFRONT_TOKEN
 const prefix = DEPLOYMENTID +".nodejs.web";
 
-const directReporter = new metrics.WavefrontDirectReporter(registry, prefix,  "surf.wavefront.com", WAVEFRONT_TOKEN, { 'app': "vra.app.weather", 'source': DEPLOYMENTID});
+const directReporter = new metrics.WavefrontDirectReporter(registry, prefix,  "surf.wavefront.com", WAVEFRONT_TOKEN, { 'app': "vra.app.weather", 'source': DEPLOYMENTID+"-web"});
 directReporter.start(5000);
 const c = new metrics.Counter();
 registry.addTaggedMetric("request.time", c, {"vra.service":"web"});
