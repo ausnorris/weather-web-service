@@ -5,6 +5,10 @@ import {TextField} from '@material-ui/core';
 import './Home.css'
 import Forecast from '../components/Forecast';
 import Map from '../components/Map'
+const forecastHost = process.env.WEATHER_FORECAST_LB_SERVICE_HOST || "localhost"
+const forecastPort = process.env.WEATHER_FORECAST_LB_SERVICE_PORT || 3001
+const geocodeHost = process.env.WEATHER_GEOCODE_LB_SERVICE_HOST || "localhost"
+const geocodePort = process.env.WEATHER_GEOCODE_LB_SERVICE_PORT || 3001
 
 class Home extends React.Component {
     constructor(props){
@@ -33,12 +37,14 @@ class Home extends React.Component {
         e.preventDefault();
         
 
-        fetch('http://127.0.0.1:3001/api?address='+this.state.text)
+        //fetch('http://127.0.0.1:3001/api?address='+this.state.text)
+        fetch('http://'+geocodeHost+':'+geocodePort+'/api?address='+this.state.text)
         .then(res=> res.json())
         .then(
             (result) => {
                 console.log(result);
-                fetch('http://127.0.0.1:3002/api?latitude='+result.latitude+'&longitude='+result.longitude+ '&location='+result.location)
+                //fetch('http://127.0.0.1:3002/api?latitude='+result.latitude+'&longitude='+result.longitude+ '&location='+result.location)
+                fetch('http://'+forecastHost+':'+forecastPort+'/api?latitude='+result.latitude+'&longitude='+result.longitude+ '&location='+result.location)
                 .then(res=> res.json())
                 .then((result) => {
                     console.log(result);
