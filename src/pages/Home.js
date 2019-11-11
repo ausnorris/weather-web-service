@@ -33,7 +33,6 @@ class Home extends React.Component {
     }
 
     handleSubmit(e){
-        alert('Submitted: '+this.state.text);
         e.preventDefault();
         
 
