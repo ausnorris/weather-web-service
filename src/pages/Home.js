@@ -5,10 +5,12 @@ import {TextField} from '@material-ui/core';
 import './Home.css'
 import Forecast from '../components/Forecast';
 import Map from '../components/Map'
-const forecastHost = process.env.WEATHER_FORECAST_LB_SERVICE_HOST || "localhost"
-const forecastPort = process.env.WEATHER_FORECAST_LB_SERVICE_PORT || 3002
-const geocodeHost = process.env.WEATHER_GEOCODE_LB_SERVICE_HOST || "localhost"
-const geocodePort = process.env.WEATHER_GEOCODE_LB_SERVICE_PORT || 3001
+const forecastHost = process.env.REACT_APP_WEATHER_FORECAST_LB_SERVICE_HOST || "localhost"
+const forecastPort = process.env.REACT_APP_WEATHER_FORECAST_LB_SERVICE_PORT || 3002
+const geocodeHost = process.env.REACT_APP_WEATHER_GEOCODE_LB_SERVICE_HOST || "localhost"
+const geocodePort = process.env.REACT_APP_WEATHER_GEOCODE_LB_SERVICE_PORT || 3001
+console.log("this is forcast host: " + forecastHost)
+console.log("this is geocode host: " + geocodeHost)
 
 class Home extends React.Component {
     constructor(props){
