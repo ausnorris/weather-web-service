@@ -71,7 +71,7 @@ class Home extends React.Component {
         return(
         <div className="page">
             <div className="heading">
-                Welcome to our Weather App demo!
+                Welcome to Weather 36 API Service!
             </div>
             <form onSubmit={(e)=> this.handleSubmit(e)}className="form">
                 <TextField 
