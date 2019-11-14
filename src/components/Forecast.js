@@ -1,14 +1,12 @@
-import React, {useState} from 'react';
+import React from 'react';
 import './Forecast.css'
 
 import Map from './Map'
 
 
-const AnyReactComponent = ({ text }) => <div>{text}</div>;
+
 class Forecast extends React.Component {
-    constructor(props){
-        super(props);
-    }
+    
     
     render(){
         
