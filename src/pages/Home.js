@@ -11,6 +11,7 @@ const geocodeHost = process.env.REACT_APP_WEATHER_GEOCODE_LB_SERVICE_HOST || "lo
 const geocodePort = process.env.REACT_APP_WEATHER_GEOCODE_LB_SERVICE_PORT || 3001
 console.log("this is forcast host: " + forecastHost)
 console.log("this is geocode host: " + geocodeHost)
+console.log("this is the port: " + forecastPort)
 
 class Home extends React.Component {
     constructor(props){
